@@ -17,10 +17,10 @@ class MainWindowController {
 
     + MainWindowController(ItemModel, SceneManager)
 
-    addItemButtonClicked(EventHandler)
-    editItemButtonClicked(EventHandler)
-    removeItemButtonClicked((EventHandler)
-    saveInventoryAs'...ButtonClicked(EventHandler)
+    addNewItemButtonClicked(EventHandler)
+    deleteSelectedItemButtonClicked((EventHandler)
+    saveAsHtmlButtonClicked(EventHandler)
+    saveAsTsvButtonClicked(EventHandler)
 
 
     addItem(String, String, BigDecimal)
@@ -28,18 +28,6 @@ class MainWindowController {
     saveInventoryAsCSV(filename: String)
     saveInventoryAsHTML(filename: String)
     saveInventoryAsJSON(filename: String)
-}
-
-class AddItemWindowController {
-}
-
-class EditItemWindowController {
-}
-
-class RemoveItemWindowController {
-}
-
-class SearchItemWindowController {
 }
 
 class ItemModel {
@@ -67,15 +55,7 @@ class FileManager {
 openjfx.org.Application <|-- InventoryTracker
 InventoryTracker -- SceneManager
 SceneManager -- MainWindowController
-SceneManager -- AddItemWindowController
-SceneManager -- EditItemWindowController
-SceneManager -- RemoveItemWindowController
-SceneManager -- SearchItemWindowController
 MainWindowController o-- ItemModel
-AddItemWindowController o-- ItemModel
-EditItemWindowController o-- ItemModel
-RemoveItemWindowController o-- ItemModel
-SearchItemWindowController o-- ItemModel
 ItemModel *-- Item
 
 @enduml

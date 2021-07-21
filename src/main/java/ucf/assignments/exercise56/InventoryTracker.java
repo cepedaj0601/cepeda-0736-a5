@@ -1,4 +1,4 @@
-package ucf.assignments.excercise56;
+package ucf.assignments.exercise56;
 
 /*
 The program should also allow the user to export the data as either a tab-separated value (TSV) file, or as a HTML file.
