@@ -7,10 +7,10 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <top>
@@ -25,7 +25,7 @@
               <MenuItem mnemonicParsing="false" text="Quit" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Find">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
@@ -41,18 +41,25 @@
    <center>
       <TableView fx:id="itemsTableView" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="itemsSerialNumberColumn" prefWidth="75.0" text="Serial Number" />
-          <TableColumn fx:id="itemsNameColumn" prefWidth="75.0" text="Name" />
-            <TableColumn fx:id="itemsValueColumn" prefWidth="75.0" text="Value" />
+          <TableColumn fx:id="itemsSerialNumberColumn" prefWidth="90.0" text="Serial Number" />
+          <TableColumn fx:id="itemsNameColumn" prefWidth="122.0" text="Name" />
+            <TableColumn fx:id="itemsValueColumn" prefWidth="60.0" text="Value" />
         </columns>
       </TableView>
    </center>
    <bottom>
-      <VBox prefHeight="56.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="162.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <TextField fx:id="ItemSerialNumberTextField" promptText="Serial Number" />
+                  <TextField fx:id="ItemNameTextField" promptText="Item Name" />
+                  <TextField fx:id="ItemPriceTextField" promptText="Item Price" />
+                  <Button fx:id="addNewItemButtonClicked" mnemonicParsing="false" text="Add New Item" />
+               </children>
+            </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="addNewItemButtonClicked" mnemonicParsing="false" text="Add New Item" />
                   <Button mnemonicParsing="false" text="Delete Selected Item" />
                </children>
             </HBox>
