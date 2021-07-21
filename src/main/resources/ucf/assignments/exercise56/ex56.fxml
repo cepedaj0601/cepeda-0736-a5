@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -13,57 +11,92 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-                  <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Save As..." />
-                  <MenuItem mnemonicParsing="false" text="Load..." />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-              <MenuItem mnemonicParsing="false" text="Quit" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Find">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </top>
    <center>
-      <TableView fx:id="itemsTableView" BorderPane.alignment="CENTER">
+      <TableView fx:id="itemsTableView" prefHeight="224.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="itemsSerialNumberColumn" prefWidth="90.0" text="Serial Number" />
-          <TableColumn fx:id="itemsNameColumn" prefWidth="122.0" text="Name" />
-            <TableColumn fx:id="itemsValueColumn" prefWidth="60.0" text="Value" />
+          <TableColumn fx:id="itemsSerialNumberColumn" prefWidth="115.0" text="Serial Number" />
+          <TableColumn fx:id="itemsNameColumn" prefWidth="328.0" text="Name" />
+            <TableColumn fx:id="itemsValueColumn" minWidth="0.0" prefWidth="155.0" text="Value" />
         </columns>
       </TableView>
    </center>
    <bottom>
-      <VBox prefHeight="162.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="160.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+            <VBox alignment="TOP_CENTER" prefHeight="146.0" prefWidth="600.0">
                <children>
-                  <TextField fx:id="ItemSerialNumberTextField" promptText="Serial Number" />
-                  <TextField fx:id="ItemNameTextField" promptText="Item Name" />
-                  <TextField fx:id="ItemPriceTextField" promptText="Item Price" />
-                  <Button fx:id="addNewItemButtonClicked" mnemonicParsing="false" text="Add New Item" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <Label prefWidth="145.0" />
+                        <Label prefWidth="145.0" />
+                        <Label prefWidth="145.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="62.0" prefWidth="590.0" spacing="5.0">
+                     <children>
+                        <TextField fx:id="ItemSerialNumberTextField" prefWidth="145.0" promptText="Serial Number" />
+                        <TextField fx:id="ItemNameTextField" prefWidth="145.0" promptText="Item Name" />
+                        <TextField fx:id="ItemPriceTextField" prefWidth="145.0" promptText="Item Price" />
+                        <Button fx:id="addNewItemButtonClicked" mnemonicParsing="false" prefWidth="130.0" text="Add New Item" textAlignment="CENTER" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="92.0" prefWidth="600.0" spacing="5.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefWidth="130.0" text="Delete Selected Item" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
                </children>
+            </VBox>
+            <HBox prefWidth="200.0" spacing="20.0">
+               <children>
+                  <HBox prefHeight="100.0" spacing="5.0">
+                     <children>
+                        <TextField prefWidth="145.0" promptText="Searchby Item Name" />
+                        <Button mnemonicParsing="false" prefWidth="130.0" text="Search" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" spacing="5.0">
+                     <children>
+                        <TextField prefWidth="145.0" promptText="Search by Serial Number" />
+                        <Button mnemonicParsing="false" prefWidth="130.0" text="Search" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button mnemonicParsing="false" text="Delete Selected Item" />
-               </children>
+            <HBox prefHeight="72.0" prefWidth="600.0" spacing="20.0">
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
             </HBox>
          </children>
       </VBox>
    </bottom>
+   <top>
+      <HBox prefHeight="35.0" prefWidth="521.0" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" text="Save As HTML..." />
+            <Button mnemonicParsing="false" text="Save As TSV..." />
+            <HBox alignment="TOP_RIGHT" prefHeight="30.0" prefWidth="391.0" spacing="5.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#Lod" prefHeight="25.0" prefWidth="147.0" text="Load Saved Inventory..." />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+   </top>
 </BorderPane>
