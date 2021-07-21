@@ -1,25 +1,37 @@
 package ucf.assignments.exercise56;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.stage.FileChooser;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 
-public class MainWindowController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MainWindowController implements Initializable {
+
+    //create table view to serve as the personal inventory
     @FXML
-    private TableView<?> itemsTableView;
+    private TableView<Item> itemsTableView;
+
+    //populate the columns
+    @FXML
+    private TableColumn<Item, String> itemSerialNumberColumn;
 
     @FXML
-    private TableColumn<?, ?> itemSerialNumberColumn;
+    private TableColumn<Item, String> itemNameColumn;
 
     @FXML
-    private TableColumn<?, ?> itemNameColumn;
+    private TableColumn<Item, Double> itemValueColumn;
 
-    @FXML
-    private TableColumn<?, ?> itemValueColumn;
-
+    //Text fields used to take in user input
     @FXML
     private TextField itemSerialNumberTextField;
 
@@ -29,44 +41,33 @@ public class MainWindowController {
     @FXML
     private TextField itemValueTextField;
 
+    //function to add a new item
     @FXML
-    void addNewItemButtonClicked(ActionEvent event){
+    void addNewItemButtonClicked(ActionEvent event) {
+        //get item serial number
         String sn = itemSerialNumberTextField.getText();
+
+        //get item name
         String name = itemNameTextField.getText();
+
+        //get item value
         double value = Double.parseDouble(itemValueTextField.getText());
 
-        Item item = addNewItem(sn, name, value);
-
-        ItemModel.add(Item);
+        //add new item to inventory with acquired information
+        //call sub function
+        addNewItemButtonClickedSubFunction();
     }
 
-    public void addNewItem(String sn, String name, double value){
-        return new Item(sn, name, value);
-    }
+    //function to create an item with given serial number, name, and value
+    public void addNewItemButtonClickedSubFunction(){
 
-    void saveAsButtonClicked(ActionEvent event){
-        filename = FileChooser.getname();
-        filetype = FileChooser.getType();
-
-        if(filetype == 'TSV'){
-            saveAsTSV(filename + filetype);
-        }
     }
 
     public void deleteSelectedItemButtonClicked(ActionEvent actionEvent) {
         deleteSelectedItemButtonClickedSubFunction();
     }
 
-    public void saveAsTSV(String filename){
-        /*
-        open up filename
-        for each item in the item model:
-            write the item to file as sn, name, price
-        close file
-         */
-    }
-
-
+    //function to find an item by name
     public void searchItemNameButtonClicked(ActionEvent actionEvent) {
         searchItemNameButtonClickedSubFunction();
     }
@@ -97,13 +98,52 @@ public class MainWindowController {
     }
 
     public void saveAsHtmlButtonClickedSubFunction() {
+        /*
+        open up filename
+        for each item in the item model:
+            write the item to file as sn, name, price
+        close file
+         */
+
     }
 
     public void saveAsTsvButtonClickedSubFunction() {
+    /*
+        open up filename
+        for each item in the item model:
+            write the item to file as sn, name, price
+        close file
+         */
+
     }
 
     public void loadButtonClickedSubFunction() {
     }
 
+    //initialize controller class
+    @Override
+    public void initialize (URL url, ResourceBundle resources) {
 
+        //set up the columns of the table
+        itemSerialNumberColumn.setCellValueFactory(new PropertyValueFactory<>("itemSerialNumber"));
+        itemNameColumn.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        itemValueColumn.setCellValueFactory(new PropertyValueFactory<>("itemValue"));
+
+        //load in some information
+        itemsTableView.setItems(getItems());
+
+        //update the list to permit for changes of the item names and descriptions
+        itemsTableView.setEditable(true);
+        itemSerialNumberColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        itemNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+      //  itemValueColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+    }
+
+    public ObservableList<Item> getItems(){
+        //set up list
+        ObservableList<Item> items = FXCollections.observableArrayList();
+
+        //return an ObservableList of Item Objects
+        return items;
+    }
 }
