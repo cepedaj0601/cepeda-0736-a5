@@ -75,12 +75,50 @@ public class MainWindowController implements Initializable {
         itemsTableView.getItems().add(newItem);
     }
 
+    public void changeItemSerialNumberCellEvent(TableColumn.CellEditEvent editedCell){
+        //edit the name of an item
+        //get the current value
+        Item itemSelected = itemsTableView.getSelectionModel().getSelectedItem();
+
+        //update the value to entered text
+        itemSelected.setItemSerialNumber(editedCell.getNewValue().toString());
+    }
+
+    public void changeItemNameCellEvent(TableColumn.CellEditEvent editedCell){
+        //edit the name of an item
+        //get the current value
+        Item itemSelected = itemsTableView.getSelectionModel().getSelectedItem();
+
+        //update the value to entered text
+        itemSelected.setItemName(editedCell.getNewValue().toString());
+    }
+
+    public void changeItemValueCellEvent(TableColumn.CellEditEvent editedCell){
+        //edit the name of an item
+        //get the current value
+        Item itemSelected = itemsTableView.getSelectionModel().getSelectedItem();
+
+        //update the value to entered text
+        itemSelected.setItemValue(Double.parseDouble(editedCell.getNewValue().toString()));
+    }
+
     public void deleteSelectedItemButtonClicked(ActionEvent actionEvent) {
         //call sub function
         deleteSelectedItemButtonClickedSubFunction();
     }
 
     public void deleteSelectedItemButtonClickedSubFunction() {
+        //get list of all items
+        ObservableList<Item> selectedRows, allItems;
+        allItems = itemsTableView.getItems();
+
+        //get list of all selected items
+        selectedRows = itemsTableView.getSelectionModel().getSelectedItems();
+
+        //in a for loop the size of the item list, remove the selected items from the item list
+        for (Item item: selectedRows) {
+            allItems.remove(item);
+        }
     }
 
     //function to find an item by name
