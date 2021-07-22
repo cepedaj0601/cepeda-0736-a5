@@ -46,18 +46,14 @@ import java.io.IOException;
 
 public class InventoryTracker extends Application{
     @Override
-    public void start(Stage primaryStage) {
-        try {
+    public void start(Stage primaryStage) throws IOException {
             Parent root = FXMLLoader.load(getClass().getResource("ex56.fxml"));
 
             Scene scene = new Scene (root);
 
+            primaryStage.setTitle("ex56");
             primaryStage.setScene(scene);
-            primaryStage.setTitle("InventoryManager");
             primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public static void main(String[] args){

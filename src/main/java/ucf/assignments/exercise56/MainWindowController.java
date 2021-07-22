@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 
@@ -16,6 +13,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
+
+
 
     //create table view to serve as the personal inventory
     @FXML
@@ -41,18 +40,25 @@ public class MainWindowController implements Initializable {
     @FXML
     private TextField itemValueTextField;
 
+    @FXML
+    public TextField searchItemNameTextField;
+
+    @FXML
+    public TextField searchSerialNumberTextField;
+
+    //Labels to display error messages
+    @FXML
+    public Label serialNumberLabel;
+
+    @FXML
+    public Label itemNameLabel;
+
+    @FXML
+    public Label itemValueLabel;
+
     //function to add a new item
     @FXML
     void addNewItemButtonClicked(ActionEvent event) {
-        //get item serial number
-        String sn = itemSerialNumberTextField.getText();
-
-        //get item name
-        String name = itemNameTextField.getText();
-
-        //get item value
-        double value = Double.parseDouble(itemValueTextField.getText());
-
         //add new item to inventory with acquired information
         //call sub function
         addNewItemButtonClickedSubFunction();
@@ -60,41 +66,43 @@ public class MainWindowController implements Initializable {
 
     //function to create an item with given serial number, name, and value
     public void addNewItemButtonClickedSubFunction(){
+        //create a new item
+        Item newItem = new Item(itemSerialNumberTextField.getText(), itemNameTextField.getText(),
+                Double.parseDouble(itemValueTextField.getText()));
 
+        //get all list items
+        //add new item to list
+        itemsTableView.getItems().add(newItem);
     }
 
     public void deleteSelectedItemButtonClicked(ActionEvent actionEvent) {
+        //call sub function
         deleteSelectedItemButtonClickedSubFunction();
-    }
-
-    //function to find an item by name
-    public void searchItemNameButtonClicked(ActionEvent actionEvent) {
-        searchItemNameButtonClickedSubFunction();
-    }
-
-    public void searchSerialNumberClicked(ActionEvent actionEvent) {
-        searchSerialNumberClickedSubFunction();
-    }
-
-    public void saveAsHtmlButtonClicked(ActionEvent actionEvent) {
-        saveAsHtmlButtonClickedSubFunction();
-    }
-
-    public void saveAsTsvButtonClicked(ActionEvent actionEvent) {
-        saveAsTsvButtonClickedSubFunction();
-    }
-
-    public void loadButtonClicked(ActionEvent actionEvent) {
-        loadButtonClickedSubFunction();
     }
 
     public void deleteSelectedItemButtonClickedSubFunction() {
     }
 
+    //function to find an item by name
+    public void searchItemNameButtonClicked(ActionEvent actionEvent) {
+        //call sub function
+        searchItemNameButtonClickedSubFunction();
+    }
+
     public void searchItemNameButtonClickedSubFunction() {
     }
 
+    public void searchSerialNumberClicked(ActionEvent actionEvent) {
+        //call sub function
+        searchSerialNumberClickedSubFunction();
+    }
+
     public void searchSerialNumberClickedSubFunction() {
+    }
+
+    public void saveAsHtmlButtonClicked(ActionEvent actionEvent) {
+        //call sub function
+        saveAsHtmlButtonClickedSubFunction();
     }
 
     public void saveAsHtmlButtonClickedSubFunction() {
@@ -104,7 +112,11 @@ public class MainWindowController implements Initializable {
             write the item to file as sn, name, price
         close file
          */
+    }
 
+    public void saveAsTsvButtonClicked(ActionEvent actionEvent) {
+        //call sub function
+        saveAsTsvButtonClickedSubFunction();
     }
 
     public void saveAsTsvButtonClickedSubFunction() {
@@ -114,7 +126,11 @@ public class MainWindowController implements Initializable {
             write the item to file as sn, name, price
         close file
          */
+    }
 
+    public void loadButtonClicked(ActionEvent actionEvent) {
+        //call sub function
+        loadButtonClickedSubFunction();
     }
 
     public void loadButtonClickedSubFunction() {
