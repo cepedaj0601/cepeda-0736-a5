@@ -40,7 +40,7 @@
                         <TextField fx:id="itemSerialNumberTextField" prefWidth="145.0" promptText="Serial Number" />
                         <TextField fx:id="itemNameTextField" prefWidth="145.0" promptText="Item Name" />
                         <TextField fx:id="itemValueTextField" prefWidth="145.0" promptText="Item Price" />
-                        <Button mnemonicParsing="false" onAction="#addNewItemButtonClicked" prefWidth="130.0" text="Add New Item" textAlignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#addNewItemButtonClicked" prefHeight="30.0" prefWidth="130.0" text="Add New Item" textAlignment="CENTER" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" top="5.0" />
@@ -61,13 +61,13 @@
                   <HBox prefHeight="100.0" spacing="5.0">
                      <children>
                         <TextField fx:id="searchItemNameTextField" prefWidth="145.0" promptText="Search by Item Name" />
-                        <Button mnemonicParsing="false" onAction="#searchItemNameButtonClicked" prefWidth="130.0" text="Search" />
+                        <Button mnemonicParsing="false" onAction="#searchItemNameButtonClicked" prefWidth="130.0" text="Search Name" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" spacing="5.0">
                      <children>
                         <TextField fx:id="searchSerialNumberTextField" prefWidth="145.0" promptText="Search by Serial Number" />
-                        <Button mnemonicParsing="false" onAction="#searchSerialNumberClicked" prefWidth="130.0" text="Search" />
+                        <Button mnemonicParsing="false" onAction="#searchSerialNumberClicked" prefWidth="130.0" text="Search Number" />
                      </children>
                   </HBox>
                </children>

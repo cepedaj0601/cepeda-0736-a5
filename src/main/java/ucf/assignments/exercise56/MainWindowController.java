@@ -74,7 +74,7 @@ public class MainWindowController implements Initializable {
         //add new item to list
         itemsTableView.getItems().add(newItem);
     }
-
+/*
     public void changeItemSerialNumberCellEvent(TableColumn.CellEditEvent editedCell){
         //edit the name of an item
         //get the current value
@@ -101,6 +101,8 @@ public class MainWindowController implements Initializable {
         //update the value to entered text
         itemSelected.setItemValue(Double.parseDouble(editedCell.getNewValue().toString()));
     }
+
+ */
 
     public void deleteSelectedItemButtonClicked(ActionEvent actionEvent) {
         //call sub function
