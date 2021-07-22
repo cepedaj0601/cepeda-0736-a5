@@ -6,15 +6,22 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.text.Font;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
 
-
+    //storage variables
+    public String serialNumber;
+    public String itemName;
+    public Double itemValue;
 
     //create table view to serve as the personal inventory
     @FXML
@@ -62,6 +69,8 @@ public class MainWindowController implements Initializable {
         //add new item to inventory with acquired information
         //call sub function
         addNewItemButtonClickedSubFunction();
+
+
     }
 
     //function to create an item with given serial number, name, and value
@@ -70,10 +79,89 @@ public class MainWindowController implements Initializable {
         Item newItem = new Item(itemSerialNumberTextField.getText(), itemNameTextField.getText(),
                 Double.parseDouble(itemValueTextField.getText()));
 
-        //get all list items
-        //add new item to list
-        itemsTableView.getItems().add(newItem);
+        //call validators
+        if(serialNumberValidator() && itemNameValidator()){
+            //get all list items
+            //add new item to list
+            itemsTableView.getItems().add(newItem);
+        }
+
     }
+
+    //function to detect errors with serial number input
+    public boolean serialNumberValidator(){
+        //take in the current input
+        serialNumber = itemSerialNumberTextField.getText();
+
+        //compare input with allowed values
+        for (int i = 0; i < serialNumber.length(); i++) {
+
+
+            //if it is not within the constraints, display the appropriate error message
+            if (!serialNumber.matches(".*[a-zA-Z0-9]+.*")) {
+                serialNumberLabel.setText("Only enter alphanumeric chars");
+
+                //resize font
+                serialNumberLabel.setFont(Font.font("System", 10));
+
+                //return false to indicate an error
+                return false;
+            }
+        }
+
+
+        //else display nothing
+        serialNumberLabel.setText("");
+
+        //return true to indicate no error
+        return true;
+    }
+
+    //function to detect errors with item name input
+    public boolean itemNameValidator(){
+        //take in the current input
+        itemName = itemNameTextField.getText();
+
+        //compare input with allowed lengths
+
+        //if it is not within the constraints, display the appropriate error message
+        if (itemName.length() <2) {
+             itemNameLabel.setText("Name is too short");
+
+             //resize font
+            itemNameLabel.setFont(Font.font("System", 10));
+            //return false to indicate an error
+            return false;
+        }
+
+        if (itemName.length() >256) {
+            itemNameLabel.setText("Name is too long");
+
+            //resize font
+            itemNameLabel.setFont(Font.font("System", 10));
+            //return false to indicate an error
+            return false;
+        }
+
+
+        //else display nothing
+        itemNameLabel.setText("");
+
+        //return true to indicate no error
+        return true;
+    }
+
+    //function to detect errors with item value input
+    public boolean itemValueValidator(){
+        //take in the current input
+        itemValue = Double.parseDouble(itemValueTextField.getText());
+
+        //compare input with allowed values
+        //if it is within the constraints, display nothing
+        //if it is not within the constraints, display the appropriate error message
+        return false;
+    }
+
 /*
     public void changeItemSerialNumberCellEvent(TableColumn.CellEditEvent editedCell){
         //edit the name of an item
@@ -179,6 +267,10 @@ public class MainWindowController implements Initializable {
     //initialize controller class
     @Override
     public void initialize (URL url, ResourceBundle resources) {
+        //initialize labels
+        serialNumberLabel.setText("");
+        itemNameLabel.setText("");
+        itemValueLabel.setText("");
 
         //set up the columns of the table
         itemSerialNumberColumn.setCellValueFactory(new PropertyValueFactory<>("itemSerialNumber"));

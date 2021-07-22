@@ -5,17 +5,9 @@ class InventoryTracker {
     main()
 }
 
-class SceneManager {
-    scenes: Map<String, Scene>
-
-    load()
-    getScene(String): Scene
-}
-
 class MainWindowController {
-    items: ItemModel
 
-    + MainWindowController(ItemModel, SceneManager)
+    + MainWindowController()
 
     addNewItemButtonClicked(EventHandler)
     deleteSelectedItemButtonClicked((EventHandler)
@@ -28,9 +20,7 @@ class MainWindowController {
     saveInventoryAsCSV(filename: String)
     saveInventoryAsHTML(filename: String)
     saveInventoryAsJSON(filename: String)
-}
 
-class ItemModel {
     - ObservableList<Item>
 }
 
@@ -53,9 +43,7 @@ class FileManager {
 }
 
 openjfx.org.Application <|-- InventoryTracker
-InventoryTracker -- SceneManager
-SceneManager -- MainWindowController
-MainWindowController o-- ItemModel
-ItemModel *-- Item
-
+InventoryTracker -- MainWindowController
+MainWindowController - FileManager
+MainWindowController o-- Item
 @enduml
