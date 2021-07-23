@@ -5,12 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
 
 import java.awt.*;
 import java.net.URL;
@@ -213,7 +215,7 @@ public class MainWindowController implements Initializable {
     }
 
 /*
-    public void changeItemSerialNumberCellEvent(TableColumn.CellEditEvent editedCell){
+    public void changeItemSerialNumberCellEvent(TableColumn.CellEditEvent editedCell){TODO get rid of  this
         //edit the name of an item
         //get the current value
         Item itemSelected = itemsTableView.getSelectionModel().getSelectedItem();
@@ -267,7 +269,7 @@ public class MainWindowController implements Initializable {
         searchItemNameButtonClickedSubFunction();
     }
 
-    public void searchItemNameButtonClickedSubFunction() {
+    public void searchItemNameButtonClickedSubFunction() {//TODO
     }
 
     public void searchSerialNumberClicked(ActionEvent actionEvent) {
@@ -275,7 +277,7 @@ public class MainWindowController implements Initializable {
         searchSerialNumberClickedSubFunction();
     }
 
-    public void searchSerialNumberClickedSubFunction() {
+    public void searchSerialNumberClickedSubFunction() {//TODO
     }
 
     public void saveAsHtmlButtonClicked(ActionEvent actionEvent) {
@@ -283,7 +285,7 @@ public class MainWindowController implements Initializable {
         saveAsHtmlButtonClickedSubFunction();
     }
 
-    public void saveAsHtmlButtonClickedSubFunction() {
+    public void saveAsHtmlButtonClickedSubFunction() {//TODO
         /*
         open up filename
         for each item in the item model:
@@ -297,7 +299,7 @@ public class MainWindowController implements Initializable {
         saveAsTsvButtonClickedSubFunction();
     }
 
-    public void saveAsTsvButtonClickedSubFunction() {
+    public void saveAsTsvButtonClickedSubFunction() {//TODO
     /*
         open up filename
         for each item in the item model:
@@ -311,7 +313,7 @@ public class MainWindowController implements Initializable {
         loadButtonClickedSubFunction();
     }
 
-    public void loadButtonClickedSubFunction() {
+    public void loadButtonClickedSubFunction() {//TODO
     }
 
     //initialize controller class
