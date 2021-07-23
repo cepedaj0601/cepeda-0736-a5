@@ -270,7 +270,18 @@ public class MainWindowController implements Initializable {
     }
 
     public void searchItemNameButtonClickedSubFunction() {//TODO
+        //take in the list
+        //take in the input to be searched
+        //cross reference the list and the input
+        //if the input is found in the list
+            //create a new observable list
+            //populate the new list with the matching item name(s)
+            //set the tableview to display that list
+        //else, set label text to notify the user that nothing was found
     }
+
+    //TODO need to make a back button to exit from the search
+
 
     public void searchSerialNumberClicked(ActionEvent actionEvent) {
         //call sub function
@@ -278,7 +289,18 @@ public class MainWindowController implements Initializable {
     }
 
     public void searchSerialNumberClickedSubFunction() {//TODO
+        //take in the list
+        //take in the input to be searched
+        //cross reference the list and the input
+        //if the input is found in the list
+            //create a new observable list
+            //populate the new list with the matching serial number
+            //set the tableview to display that list
+        //else, set label text to notify the user that nothing was found
     }
+
+    //TODO need to make a back button to exit from the search
+
 
     public void saveAsHtmlButtonClicked(ActionEvent actionEvent) {
         //call sub function
