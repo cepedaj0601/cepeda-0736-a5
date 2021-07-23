@@ -6,14 +6,15 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.exercise56.MainWindowController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.exercise56.MainWindowController">
    <center>
-      <TableView fx:id="itemsTableView" prefHeight="224.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="itemsTableView" maxHeight="300.0" minHeight="200.0" prefHeight="300.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="itemSerialNumberColumn" prefWidth="115.0" text="Serial Number" />
           <TableColumn fx:id="itemNameColumn" prefWidth="328.0" text="Name" />
@@ -24,14 +25,11 @@
    <bottom>
       <VBox prefHeight="160.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="120.0" prefWidth="600.0">
+            <VBox alignment="TOP_CENTER" prefHeight="72.0" prefWidth="600.0">
                <children>
-                  <HBox prefHeight="53.0" prefWidth="600.0" spacing="5.0">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
+                  <HBox prefWidth="600.0" spacing="5.0">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="145.0">
+                        <VBox prefWidth="145.0">
                            <children>
                               <Label fx:id="serialNumberLabel" prefWidth="145.0" textAlignment="CENTER" textFill="RED">
                                  <font>
@@ -48,6 +46,9 @@
                         <Label fx:id="itemNameLabel" prefWidth="145.0" textFill="RED" />
                         <Label fx:id="itemValueLabel" prefWidth="145.0" textFill="RED" />
                      </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
                   </HBox>
                   <HBox prefHeight="34.0" prefWidth="600.0" spacing="5.0">
                      <children>
@@ -60,34 +61,56 @@
                         <Insets bottom="5.0" left="5.0" top="5.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0" spacing="5.0">
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="600.0" spacing="5.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#deleteSelectedItemButtonClicked" prefWidth="130.0" text="Delete Selected Item" />
                      </children>
                      <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets left="5.0" right="5.0" />
                      </padding>
                   </HBox>
                </children>
             </VBox>
-            <HBox prefHeight="50.0" prefWidth="200.0" spacing="20.0">
+            <HBox prefHeight="24.0" prefWidth="600.0" spacing="20.0">
                <children>
                   <HBox prefWidth="280.0" spacing="5.0">
-                     <children>
-                        <TextField fx:id="searchItemNameTextField" prefWidth="145.0" promptText="Search by Item Name" />
-                        <Button mnemonicParsing="false" onAction="#searchItemNameButtonClicked" prefWidth="130.0" text="Search Name" />
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" spacing="5.0">
                      <children>
                         <TextField fx:id="searchSerialNumberTextField" prefWidth="145.0" promptText="Search by Serial Number" />
                         <Button mnemonicParsing="false" onAction="#searchSerialNumberClicked" prefWidth="130.0" text="Search Number" />
                      </children>
                   </HBox>
+                  <TextField fx:id="searchItemNameTextField" prefWidth="145.0" promptText="Search by Item Name" />
+                  <Button mnemonicParsing="false" onAction="#searchItemNameButtonClicked" prefWidth="130.0" text="Search Name" />
+                  <HBox prefHeight="100.0" spacing="5.0" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="searchSerialNumberLabel" textFill="RED">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="searchItemNameLabel" textFill="RED">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
             </HBox>
          </children>
       </VBox>

@@ -63,7 +63,13 @@ public class MainWindowController implements Initializable {
     public Label duplicateSerialNumberLabel;
 
     @FXML
+    public Label searchSerialNumberLabel;
+
+    @FXML
     public Label itemNameLabel;
+
+    @FXML
+    public Label searchItemNameLabel;
 
     @FXML
     public Label itemValueLabel;
@@ -214,36 +220,6 @@ public class MainWindowController implements Initializable {
         return false;
     }
 
-/*
-    public void changeItemSerialNumberCellEvent(TableColumn.CellEditEvent editedCell){TODO get rid of  this
-        //edit the name of an item
-        //get the current value
-        Item itemSelected = itemsTableView.getSelectionModel().getSelectedItem();
-
-        //update the value to entered text
-        itemSelected.setItemSerialNumber(editedCell.getNewValue().toString());
-    }
-
-    public void changeItemNameCellEvent(TableColumn.CellEditEvent editedCell){
-        //edit the name of an item
-        //get the current value
-        Item itemSelected = itemsTableView.getSelectionModel().getSelectedItem();
-
-        //update the value to entered text
-        itemSelected.setItemName(editedCell.getNewValue().toString());
-    }
-
-    public void changeItemValueCellEvent(TableColumn.CellEditEvent editedCell){
-        //edit the name of an item
-        //get the current value
-        Item itemSelected = itemsTableView.getSelectionModel().getSelectedItem();
-
-        //update the value to entered text
-        itemSelected.setItemValue(Double.parseDouble(editedCell.getNewValue().toString()));
-    }
-
- */
-
     public void deleteSelectedItemButtonClicked(ActionEvent actionEvent) {
         //call sub function
         deleteSelectedItemButtonClickedSubFunction();
@@ -269,15 +245,38 @@ public class MainWindowController implements Initializable {
         searchItemNameButtonClickedSubFunction();
     }
 
-    public void searchItemNameButtonClickedSubFunction() {//TODO
+    public boolean searchItemNameButtonClickedSubFunction() {//TODO
         //take in the list
+        ObservableList<Item> allItems;
+        allItems = itemsTableView.getItems();
+
+        //check if the list is empty
+        if(itemsTableView.getItems().isEmpty()){
+
+            //return as false to indicate that the input does not appear in the current list
+        }
         //take in the input to be searched
-        //cross reference the list and the input
-        //if the input is found in the list
-            //create a new observable list
-            //populate the new list with the matching item name(s)
-            //set the tableview to display that list
+        String search = searchSerialNumberTextField.getText();
+
+        //cross reference list with input
+        for (Item item: allItems) {
+
+            //if the input is found in the list
+            if (item.getItemSerialNumber().equals(search)) {
+                //create a new observable list
+                //populate the new list with the matching item name(s)
+                //set the tableview to display that list
+            }
+        }
+
         //else, set label text to notify the user that nothing was found
+        searchItemNameLabel.setText("");
+
+        //resize font
+        searchItemNameLabel.setFont(Font.font("System", 10));
+
+        //return false to indicate that nothing was found
+        return false;
     }
 
     //TODO need to make a back button to exit from the search
@@ -288,8 +287,9 @@ public class MainWindowController implements Initializable {
         searchSerialNumberClickedSubFunction();
     }
 
-    public void searchSerialNumberClickedSubFunction() {//TODO
+    public boolean searchSerialNumberClickedSubFunction() {//TODO
         //take in the list
+
         //take in the input to be searched
         //cross reference the list and the input
         //if the input is found in the list
@@ -297,6 +297,13 @@ public class MainWindowController implements Initializable {
             //populate the new list with the matching serial number
             //set the tableview to display that list
         //else, set label text to notify the user that nothing was found
+        searchSerialNumberLabel.setText("");
+
+        //resize font
+        searchSerialNumberLabel.setFont(Font.font("System", 10));
+
+        //return false to indicate that nothing was found
+        return false;
     }
 
     //TODO need to make a back button to exit from the search
