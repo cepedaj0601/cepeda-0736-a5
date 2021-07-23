@@ -94,7 +94,7 @@
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="searchSerialNumberLabel" textFill="RED">
+                        <Label fx:id="searchSerialNumberLabel" prefWidth="145.0" textFill="RED">
                            <font>
                               <Font size="10.0" />
                            </font>
@@ -103,7 +103,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="searchItemNameLabel" textFill="RED">
+                        <Label fx:id="searchItemNameLabel" prefWidth="145.0" textFill="RED">
                            <font>
                               <Font size="10.0" />
                            </font>

@@ -74,6 +74,12 @@ public class MainWindowController implements Initializable {
     @FXML
     public Label itemValueLabel;
 
+    //create a new observable list for searches
+    ObservableList<Item> searchedItems;
+
+    //testing variables
+    public int numItems = 0;
+
     //function to add a new item
     @FXML
     void addNewItemButtonClicked(ActionEvent event) {
@@ -85,7 +91,8 @@ public class MainWindowController implements Initializable {
     }
 
     //function to create an item with given serial number, name, and value
-    public void addNewItemButtonClickedSubFunction(){
+    public int addNewItemButtonClickedSubFunction(){
+
         //create a new item
         Item newItem = new Item(itemSerialNumberTextField.getText(), itemNameTextField.getText(),
                 Double.parseDouble(itemValueTextField.getText()));
@@ -95,8 +102,12 @@ public class MainWindowController implements Initializable {
             //get all list items
             //add new item to list
             itemsTableView.getItems().add(newItem);
+
+            //increment counter
+            numItems = numItems + 1;
         }
 
+        return numItems;
     }
 
     //function to detect errors with serial number input
@@ -239,6 +250,8 @@ public class MainWindowController implements Initializable {
         }
     }
 
+
+
     //function to find an item by name
     public void searchItemNameButtonClicked(ActionEvent actionEvent) {
         //call sub function
@@ -252,31 +265,45 @@ public class MainWindowController implements Initializable {
 
         //check if the list is empty
         if(itemsTableView.getItems().isEmpty()){
+            //change label to display empty list status
+            searchItemNameLabel.setText("There are no items in the list");
 
+            //resize font
+            searchItemNameLabel.setFont(Font.font("System", 10));
             //return as false to indicate that the input does not appear in the current list
         }
         //take in the input to be searched
-        String search = searchSerialNumberTextField.getText();
+        String search = searchItemNameTextField.getText();
+
+        int temp = 0;
 
         //cross reference list with input
         for (Item item: allItems) {
 
             //if the input is found in the list
-            if (item.getItemSerialNumber().equals(search)) {
-                //create a new observable list
+            if (item.getItemName().equals(search)) {
                 //populate the new list with the matching item name(s)
-                //set the tableview to display that list
+                searchedItems.add(item);
+
+                temp = 1;
             }
         }
 
-        //else, set label text to notify the user that nothing was found
-        searchItemNameLabel.setText("");
+        if(temp == 1){
+            itemsTableView.setItems(searchedItems);
+            return true;
+        }
 
-        //resize font
-        searchItemNameLabel.setFont(Font.font("System", 10));
+        else {
+            //else, set label text to notify the user that nothing was found
+            searchItemNameLabel.setText("Item name not found");
 
-        //return false to indicate that nothing was found
-        return false;
+            //resize font
+            searchItemNameLabel.setFont(Font.font("System", 10));
+
+            //return false to indicate that nothing was found
+            return false;
+        }
     }
 
     //TODO need to make a back button to exit from the search
@@ -289,21 +316,50 @@ public class MainWindowController implements Initializable {
 
     public boolean searchSerialNumberClickedSubFunction() {//TODO
         //take in the list
+        ObservableList<Item> allItems;
+        allItems = itemsTableView.getItems();
 
+        //check if the list is empty
+        if(itemsTableView.getItems().isEmpty()){
+            //change label to display empty list status
+            searchSerialNumberLabel.setText("There are no items in the list");
+
+            //resize font
+            searchSerialNumberLabel.setFont(Font.font("System", 10));
+            //return as false to indicate that the input does not appear in the current list
+        }
         //take in the input to be searched
-        //cross reference the list and the input
-        //if the input is found in the list
-            //create a new observable list
-            //populate the new list with the matching serial number
-            //set the tableview to display that list
-        //else, set label text to notify the user that nothing was found
-        searchSerialNumberLabel.setText("");
+        String search = searchSerialNumberTextField.getText();
 
-        //resize font
-        searchSerialNumberLabel.setFont(Font.font("System", 10));
+        int temp = 0;
 
-        //return false to indicate that nothing was found
-        return false;
+        //cross reference list with input
+        for (Item item: allItems) {
+
+            //if the input is found in the list
+            if (item.getItemSerialNumber().equals(search)) {
+                //populate the new list with the matching Serial Number
+                searchedItems.add(item);
+
+                temp = 1;
+            }
+        }
+
+        if(temp == 1){
+            itemsTableView.setItems(searchedItems);
+            return true;
+        }
+
+        else {
+            //else, set label text to notify the user that nothing was found
+            searchSerialNumberLabel.setText("Serial Number not found");
+
+            //resize font
+            searchSerialNumberLabel.setFont(Font.font("System", 10));
+
+            //return false to indicate that nothing was found
+            return false;
+        }
     }
 
     //TODO need to make a back button to exit from the search
