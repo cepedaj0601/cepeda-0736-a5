@@ -1,19 +1,21 @@
 package ucf.assignments.exercise56;
 
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Item  {
     //class for each item of the tableview
 
     //create data types to hold the names, numbers, and values
-    private SimpleStringProperty itemSerialNumber, itemName;
-    private Double itemValue;
+    private final SimpleStringProperty itemSerialNumber;
+    private final SimpleStringProperty itemName;
+    private final SimpleDoubleProperty itemValue;
 
     //create constructor
     public Item(String itemSerialNumber, String itemName, Double itemValue) {
         this.itemSerialNumber = new SimpleStringProperty(itemSerialNumber);
         this.itemName = new SimpleStringProperty(itemName);
-        this.itemValue = itemValue;
+        this.itemValue = new SimpleDoubleProperty(itemValue);
     }
 
     //create getters and setters
@@ -42,10 +44,10 @@ public class Item  {
     }
 
     public Double getItemValue() {
-        return itemValue;
+        return itemValue.get();
     }
 
     public void setItemValue(Double itemValue) {
-        this.itemValue = itemValue;
+        this.itemValue.set(itemValue);
     }
 }

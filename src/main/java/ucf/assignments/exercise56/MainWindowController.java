@@ -58,6 +58,9 @@ public class MainWindowController implements Initializable {
     public Label serialNumberLabel;
 
     @FXML
+    public Label duplicateSerialNumberLabel;
+
+    @FXML
     public Label itemNameLabel;
 
     @FXML
@@ -80,7 +83,7 @@ public class MainWindowController implements Initializable {
                 Double.parseDouble(itemValueTextField.getText()));
 
         //call validators
-        if(serialNumberValidator() && itemNameValidator()){
+        if(serialNumberValidator() && duplicateSerialNumberChecker() && itemNameValidator()){
             //get all list items
             //add new item to list
             itemsTableView.getItems().add(newItem);
@@ -109,12 +112,40 @@ public class MainWindowController implements Initializable {
             }
         }
 
-
         //else display nothing
         serialNumberLabel.setText("");
 
         //return true to indicate no error
         return true;
+    }
+
+    //function to check if serial number already exists
+    public boolean duplicateSerialNumberChecker(){
+        //take in current input
+        serialNumber = itemSerialNumberTextField.getText();
+
+        //take in list of all items
+        ObservableList<Item> allItems;
+        allItems = itemsTableView.getItems();
+
+        //cross reference list with input
+        for (Item item: allItems) {
+
+            //if input appears in list, display error message
+            if (item.getItemSerialNumber().equals(serialNumber)) {
+                duplicateSerialNumberLabel.setText("Serial Number already exists");
+
+                //resize text
+                duplicateSerialNumberLabel.setFont((Font.font("System", 10)));
+
+                //return true to indicate that a duplicate was found
+                return true;
+            }
+        }
+
+        //else, display nothing and set as false to indicate that the input does not appear in the current list
+        duplicateSerialNumberLabel.setText("");
+        return false;
     }
 
     //function to detect errors with item name input
@@ -284,7 +315,7 @@ public class MainWindowController implements Initializable {
         itemsTableView.setEditable(true);
         itemSerialNumberColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         itemNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-      //  itemValueColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+     //   itemValueColumn.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
     public ObservableList<Item> getItems(){

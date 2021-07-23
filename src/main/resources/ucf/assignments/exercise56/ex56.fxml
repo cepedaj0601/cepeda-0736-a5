@@ -24,22 +24,32 @@
    <bottom>
       <VBox prefHeight="160.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="146.0" prefWidth="600.0">
+            <VBox alignment="TOP_CENTER" prefHeight="120.0" prefWidth="600.0">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                  <HBox prefHeight="53.0" prefWidth="600.0" spacing="5.0">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                      <children>
-                        <Label fx:id="serialNumberLabel" prefWidth="145.0" textFill="RED">
-                           <font>
-                              <Font size="10.0" />
-                           </font></Label>
+                        <VBox prefHeight="200.0" prefWidth="145.0">
+                           <children>
+                              <Label fx:id="serialNumberLabel" prefWidth="145.0" textAlignment="CENTER" textFill="RED">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="duplicateSerialNumberLabel" prefWidth="145.0" textFill="RED">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
                         <Label fx:id="itemNameLabel" prefWidth="145.0" textFill="RED" />
                         <Label fx:id="itemValueLabel" prefWidth="145.0" textFill="RED" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="62.0" prefWidth="590.0" spacing="5.0">
+                  <HBox prefHeight="34.0" prefWidth="600.0" spacing="5.0">
                      <children>
                         <TextField fx:id="itemSerialNumberTextField" prefWidth="145.0" promptText="Serial Number" />
                         <TextField fx:id="itemNameTextField" prefWidth="145.0" promptText="Item Name" />
@@ -50,7 +60,7 @@
                         <Insets bottom="5.0" left="5.0" top="5.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="92.0" prefWidth="600.0" spacing="5.0">
+                  <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0" spacing="5.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#deleteSelectedItemButtonClicked" prefWidth="130.0" text="Delete Selected Item" />
                      </children>
@@ -60,9 +70,9 @@
                   </HBox>
                </children>
             </VBox>
-            <HBox prefWidth="200.0" spacing="20.0">
+            <HBox prefHeight="50.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <HBox prefHeight="100.0" spacing="5.0">
+                  <HBox prefWidth="280.0" spacing="5.0">
                      <children>
                         <TextField fx:id="searchItemNameTextField" prefWidth="145.0" promptText="Search by Item Name" />
                         <Button mnemonicParsing="false" onAction="#searchItemNameButtonClicked" prefWidth="130.0" text="Search Name" />
@@ -77,11 +87,6 @@
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </HBox>
-            <HBox prefHeight="72.0" prefWidth="600.0" spacing="20.0">
-               <padding>
-                  <Insets left="5.0" right="5.0" />
                </padding>
             </HBox>
          </children>
