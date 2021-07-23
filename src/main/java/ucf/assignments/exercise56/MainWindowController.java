@@ -83,7 +83,7 @@ public class MainWindowController implements Initializable {
                 Double.parseDouble(itemValueTextField.getText()));
 
         //call validators
-        if(serialNumberValidator() && duplicateSerialNumberChecker() && itemNameValidator()){
+        if(serialNumberValidator()/* && duplicateSerialNumberChecker() TODO*/&& itemNameValidator()){
             //get all list items
             //add new item to list
             itemsTableView.getItems().add(newItem);
@@ -102,7 +102,19 @@ public class MainWindowController implements Initializable {
 
             //if it is not within the constraints, display the appropriate error message
             if (!serialNumber.matches(".*[a-zA-Z0-9]+.*")) {
-                serialNumberLabel.setText("Only enter alphanumeric chars");
+                serialNumberLabel.setText("Enter only letters & numbers");
+
+                //resize font
+                serialNumberLabel.setFont(Font.font("System", 10));
+
+                //return false to indicate an error
+                return false;
+            }
+
+            //ensure length is valid
+            else if(serialNumber.length() != 10){
+                //display error message
+                serialNumberLabel.setText("Must be 10 characters long");
 
                 //resize font
                 serialNumberLabel.setFont(Font.font("System", 10));
@@ -120,13 +132,20 @@ public class MainWindowController implements Initializable {
     }
 
     //function to check if serial number already exists
-    public boolean duplicateSerialNumberChecker(){
+    public boolean duplicateSerialNumberChecker(){//TODO
         //take in current input
         serialNumber = itemSerialNumberTextField.getText();
 
         //take in list of all items
         ObservableList<Item> allItems;
         allItems = itemsTableView.getItems();
+
+        //check if the list is empty
+        if(itemsTableView.getItems().isEmpty()){
+
+            //return as false to indicate that the input does not appear in the current list
+            return false;
+        }
 
         //cross reference list with input
         for (Item item: allItems) {
