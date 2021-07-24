@@ -4,13 +4,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -82,8 +88,6 @@ public class MainWindowController implements Initializable {
         //add new item to inventory with acquired information
         //call sub function
         addNewItemButtonClickedSubFunction();
-
-
     }
 
     //function to create an item with given serial number, name, and value
@@ -305,6 +309,7 @@ public class MainWindowController implements Initializable {
             //return as false to indicate that the input does not appear in the current list
             return false;
         }
+
         //take in the input to be searched
         String search = searchSerialNumberTextField.getText();
 
@@ -339,7 +344,6 @@ public class MainWindowController implements Initializable {
         }
     }
 
-    //TODO need to make a back button to exit from the search
     public void exitSearchButtonClicked(ActionEvent actionEvent){
         //call sub function
         exitSearchButtonClickedSubFunction();
@@ -387,6 +391,8 @@ public class MainWindowController implements Initializable {
     }
 
     public void loadButtonClickedSubFunction() {//TODO
+        //  FileChooser fileChooser = new FileChooser();
+        //  File file = fileChooser.showOpenDialog(primaryStage);
     }
 
     //initialize controller class
