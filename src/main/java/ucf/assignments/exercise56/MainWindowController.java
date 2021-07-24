@@ -5,14 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
+
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.text.Font;
-import javafx.stage.FileChooser;
+
 
 import java.awt.*;
 import java.net.URL;
@@ -120,7 +120,7 @@ public class MainWindowController implements Initializable {
 
 
             //if it is not within the constraints, display the appropriate error message
-            if (!serialNumber.matches(".*[a-zA-Z0-9]+.*")) {
+            if (!Character.isLetterOrDigit(serialNumber.charAt(i))) {
                 serialNumberLabel.setText("Enter only letters & numbers");
 
                 //resize font
