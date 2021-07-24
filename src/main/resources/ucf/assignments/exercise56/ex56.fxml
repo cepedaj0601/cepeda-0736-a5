@@ -79,37 +79,49 @@
                         <Button mnemonicParsing="false" onAction="#searchSerialNumberClicked" prefWidth="130.0" text="Search Number" />
                      </children>
                   </HBox>
-                  <TextField fx:id="searchItemNameTextField" prefWidth="145.0" promptText="Search by Item Name" />
-                  <Button mnemonicParsing="false" onAction="#searchItemNameButtonClicked" prefWidth="130.0" text="Search Name" />
-                  <HBox prefHeight="100.0" spacing="5.0" />
+                  <HBox prefHeight="100.0" spacing="5.0">
+                     <children>
+                        <TextField fx:id="searchItemNameTextField" prefWidth="145.0" promptText="Search by Item Name" />
+                        <Button mnemonicParsing="false" onAction="#searchItemNameButtonClicked" prefWidth="130.0" text="Search Name" />
+                     </children></HBox>
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="150.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <padding>
                   <Insets left="5.0" right="5.0" />
                </padding>
                <children>
-                  <AnchorPane prefHeight="35.0" prefWidth="140.0">
+                  <HBox prefHeight="100.0" prefWidth="280.0" spacing="5.0">
                      <children>
-                        <Label fx:id="searchSerialNumberLabel" prefWidth="145.0" textFill="RED">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Label>
+                        <AnchorPane prefHeight="35.0" prefWidth="129.0">
+                           <children>
+                              <Label fx:id="searchSerialNumberLabel" prefWidth="145.0" textFill="RED">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <Button mnemonicParsing="false" onAction="#exitSearchButtonClicked" prefWidth="130.0" text="Exit Search" />
                      </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="280.0">
                      <children>
-                        <Label fx:id="searchItemNameLabel" prefWidth="145.0" textFill="RED">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Label>
+                        <AnchorPane prefHeight="35.0" prefWidth="145.0">
+                           <children>
+                              <Label fx:id="searchItemNameLabel" layoutX="5.0" layoutY="1.0" prefWidth="145.0" textFill="RED">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <Button mnemonicParsing="false" onAction="#exitSearchButtonClicked" prefWidth="130.0" text="Exit Search" />
                      </children>
-                  </AnchorPane>
+                  </HBox>
                </children>
             </HBox>
          </children>

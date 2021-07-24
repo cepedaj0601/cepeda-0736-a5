@@ -5,16 +5,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.text.Font;
-
-
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -75,7 +71,7 @@ public class MainWindowController implements Initializable {
     public Label itemValueLabel;
 
     //create a new observable list for searches
-    ObservableList<Item> searchedItems;
+    ObservableList<Item> searchedItems = FXCollections.observableArrayList();
 
     //testing variables
     public int numItems = 0;
@@ -151,7 +147,7 @@ public class MainWindowController implements Initializable {
     }
 
     //function to check if serial number already exists
-    public boolean duplicateSerialNumberChecker(){//TODO
+    public boolean duplicateSerialNumberChecker(){
         //take in current input
         serialNumber = itemSerialNumberTextField.getText();
 
@@ -213,17 +209,6 @@ public class MainWindowController implements Initializable {
         return true;
     }
 
-    //function to detect errors with item value input
-    public boolean itemValueValidator(){
-        //take in the current input
-        itemValue = Double.parseDouble(itemValueTextField.getText());
-
-        //compare input with allowed values
-        //if it is within the constraints, display nothing
-        //if it is not within the constraints, display the appropriate error message
-        return false;
-    }
-
     public void deleteSelectedItemButtonClicked(ActionEvent actionEvent) {
         //call sub function
         deleteSelectedItemButtonClickedSubFunction();
@@ -251,7 +236,7 @@ public class MainWindowController implements Initializable {
         searchItemNameButtonClickedSubFunction();
     }
 
-    public boolean searchItemNameButtonClickedSubFunction() {//TODO
+    public boolean searchItemNameButtonClickedSubFunction() {
         //take in the list
         ObservableList<Item> allItems;
         allItems = itemsTableView.getItems();
@@ -299,15 +284,12 @@ public class MainWindowController implements Initializable {
         }
     }
 
-    //TODO need to make a back button to exit from the search
-
-
     public void searchSerialNumberClicked(ActionEvent actionEvent) {
         //call sub function
         searchSerialNumberClickedSubFunction();
     }
 
-    public boolean searchSerialNumberClickedSubFunction() {//TODO
+    public boolean searchSerialNumberClickedSubFunction() {
         //take in the list
         ObservableList<Item> allItems;
         allItems = itemsTableView.getItems();
@@ -319,7 +301,9 @@ public class MainWindowController implements Initializable {
 
             //resize font
             searchSerialNumberLabel.setFont(Font.font("System", 10));
+
             //return as false to indicate that the input does not appear in the current list
+            return false;
         }
         //take in the input to be searched
         String search = searchSerialNumberTextField.getText();
@@ -356,7 +340,18 @@ public class MainWindowController implements Initializable {
     }
 
     //TODO need to make a back button to exit from the search
+    public void exitSearchButtonClicked(ActionEvent actionEvent){
+        //call sub function
+        exitSearchButtonClickedSubFunction();
+    }
 
+    public void exitSearchButtonClickedSubFunction(){
+        //set table to original list
+        itemsTableView.setItems(getItems());
+
+        //clear search list
+        searchedItems.clear();
+    }
 
     public void saveAsHtmlButtonClicked(ActionEvent actionEvent) {
         //call sub function
@@ -417,10 +412,9 @@ public class MainWindowController implements Initializable {
      //   itemValueColumn.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
+    //set up list
+    ObservableList<Item> items = FXCollections.observableArrayList();
     public ObservableList<Item> getItems(){
-        //set up list
-        ObservableList<Item> items = FXCollections.observableArrayList();
-
         //return an ObservableList of Item Objects
         return items;
     }
