@@ -98,7 +98,7 @@ public class MainWindowController implements Initializable {
                 Double.parseDouble(itemValueTextField.getText()));
 
         //call validators
-        if(serialNumberValidator()/* && duplicateSerialNumberChecker() TODO*/&& itemNameValidator()){
+        if(serialNumberValidator() && !duplicateSerialNumberChecker() && itemNameValidator()){
             //get all list items
             //add new item to list
             itemsTableView.getItems().add(newItem);
@@ -159,13 +159,6 @@ public class MainWindowController implements Initializable {
         ObservableList<Item> allItems;
         allItems = itemsTableView.getItems();
 
-        //check if the list is empty
-        if(itemsTableView.getItems().isEmpty()){
-
-            //return as false to indicate that the input does not appear in the current list
-            return false;
-        }
-
         //cross reference list with input
         for (Item item: allItems) {
 
@@ -181,7 +174,7 @@ public class MainWindowController implements Initializable {
             }
         }
 
-        //else, display nothing and set as false to indicate that the input does not appear in the current list
+        //else, display nothing and return true to indicate that the input does not appear in the current list
         duplicateSerialNumberLabel.setText("");
         return false;
     }
