@@ -385,6 +385,20 @@ public class MainWindowController implements Initializable {
          */
     }
 
+    public void saveAsJsonButtonClicked() {
+        //call sub function
+        saveAsJsonButtonClickedSubFunction();
+    }
+
+    public void saveAsJsonButtonClickedSubFunction(){//TODO
+        /*
+        open up filename
+        for each item in the item model:
+            write the item to file as sn, name, price
+        close file
+         */
+    }
+
     public void loadButtonClicked(ActionEvent actionEvent) {
         //call sub function
         loadButtonClickedSubFunction();
@@ -415,7 +429,7 @@ public class MainWindowController implements Initializable {
         itemsTableView.setEditable(true);
         itemSerialNumberColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         itemNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-     //   itemValueColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+     //   itemValueColumn.setCellFactory(TextFieldTableCell.forTableColumn());//TODO
     }
 
     //set up list

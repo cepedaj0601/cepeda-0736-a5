@@ -132,7 +132,8 @@
          <children>
             <Button mnemonicParsing="false" onAction="#saveAsHtmlButtonClicked" text="Save As HTML..." />
             <Button mnemonicParsing="false" onAction="#saveAsTsvButtonClicked" text="Save As TSV..." />
-            <HBox alignment="TOP_RIGHT" prefHeight="30.0" prefWidth="391.0" spacing="5.0">
+            <Button mnemonicParsing="false" onAction="#saveAsJsonButtonClicked" text="Save As JSON..." />
+            <HBox alignment="TOP_RIGHT" prefHeight="30.0" prefWidth="292.0" spacing="5.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#loadButtonClicked" prefHeight="25.0" prefWidth="147.0" text="Load Saved Inventory..." />
                </children>
