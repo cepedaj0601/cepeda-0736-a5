@@ -13,10 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.text.Font;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,7 +21,7 @@ public class MainWindowController implements Initializable {
     //storage variables
     public String serialNumber;
     public String itemName;
-    public String itemValue;
+    public Double itemValue;
 
     //create table view to serve as the personal inventory
     @FXML
@@ -39,7 +35,7 @@ public class MainWindowController implements Initializable {
     private TableColumn<Item, String> itemNameColumn;
 
     @FXML
-    private TableColumn<Item, String> itemValueColumn;
+    private TableColumn<Item, Double> itemValueColumn;
 
     //Text fields used to take in user input
     @FXML
@@ -95,7 +91,7 @@ public class MainWindowController implements Initializable {
 
         //create a new item
         Item newItem = new Item(itemSerialNumberTextField.getText(), itemNameTextField.getText(),
-                itemValueTextField.getText());
+                Double.parseDouble(itemValueTextField.getText()));
 
         //call validators
         if(serialNumberValidator() && !duplicateSerialNumberChecker() && itemNameValidator()/* && itemNameValidator()*/){
@@ -213,7 +209,7 @@ public class MainWindowController implements Initializable {
         //return true to indicate no error
         return true;
     }
-
+/*
     //function to detect errors with item value input
     public boolean itemValueValidator(){
         //take in the current input
@@ -234,7 +230,7 @@ public class MainWindowController implements Initializable {
         //return true to indicate no error
         return true;
     }
-
+ */
     public void deleteSelectedItemButtonClicked(ActionEvent actionEvent) {
         //call sub function
         deleteSelectedItemButtonClickedSubFunction();
@@ -453,7 +449,7 @@ public class MainWindowController implements Initializable {
         itemsTableView.setEditable(true);
         itemSerialNumberColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         itemNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        itemValueColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        //itemValueColumn.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
     //set up list
