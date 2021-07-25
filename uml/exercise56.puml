@@ -11,15 +11,25 @@ class MainWindowController {
 
     addNewItemButtonClicked(EventHandler)
     deleteSelectedItemButtonClicked((EventHandler)
+    searchItemNameButtonClicked()
+    searchSerialNumberClicked()
+    exitSearchButtonClicked()
     saveAsHtmlButtonClicked(EventHandler)
     saveAsTsvButtonClicked(EventHandler)
-
+    saveAsJsonButtonClicked(EventHandler)
 
     addItem(String, String, BigDecimal)
     editItem()
-    saveInventoryAsCSV(filename: String)
-    saveInventoryAsHTML(filename: String)
-    saveInventoryAsJSON(filename: String)
+    deleteSelectedItemButtonClickedSubFunction()
+    serialNumberValidator()
+    duplicateSerialNumberChecker()
+    itemNameValidator()
+    searchItemNameButtonClickedSubFunction()
+    searchSerialNumberClickedSubFunction()
+    exitSearchButtonClickedSubFunction()
+    saveAsHtmlButtonClickedSubFunction()
+    saveAsTsvButtonClickedSubFunction()
+    saveAsJsonButtonClickedSubFunction()
 
     - ObservableList<Item>
 }
@@ -34,12 +44,6 @@ class Item {
     + nameProperty()
     + getSerialNumber()
     '...
-}
-
-class FileManager {
-    saveAsCSV(filename: String, data: String)
-    saveAsHTML(filename: String, data: String)
-    saveAsJSON(filename: String, data: String)
 }
 
 openjfx.org.Application <|-- InventoryTracker
