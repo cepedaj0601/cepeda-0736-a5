@@ -1,4 +1,5 @@
 **USER GUIDE**
+
 To add an item, enter the serial number, item name, and value in each of the corresponding text fields.
 The serial number must be 10 characters long, unique, and only contain alphanumeric characters.
 The item name must be between 2 & 256 characters. The item value must be a number to be displayed in dollars. 
