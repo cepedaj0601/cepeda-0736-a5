@@ -1,6 +1,5 @@
 package ucf.assignments.exercise56;
 
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Item  {
@@ -9,13 +8,13 @@ public class Item  {
     //create data types to hold the names, numbers, and values
     private final SimpleStringProperty itemSerialNumber;
     private final SimpleStringProperty itemName;
-    private final SimpleDoubleProperty itemValue;
+    private final SimpleStringProperty itemValue;
 
     //create constructor
-    public Item(String itemSerialNumber, String itemName, Double itemValue) {
+    public Item(String itemSerialNumber, String itemName, String itemValue) {
         this.itemSerialNumber = new SimpleStringProperty(itemSerialNumber);
         this.itemName = new SimpleStringProperty(itemName);
-        this.itemValue = new SimpleDoubleProperty(itemValue);
+        this.itemValue = new SimpleStringProperty(itemValue);
     }
 
     //create getters and setters
@@ -43,11 +42,11 @@ public class Item  {
         this.itemName.set(itemName);
     }
 
-    public Double getItemValue() {
+    public String getItemValue() {
         return itemValue.get();
     }
 
-    public void setItemValue(Double itemValue) {
+    public void setItemValue(String itemValue) {
         this.itemValue.set(itemValue);
     }
 }

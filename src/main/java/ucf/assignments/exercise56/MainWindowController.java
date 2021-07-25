@@ -25,7 +25,7 @@ public class MainWindowController implements Initializable {
     //storage variables
     public String serialNumber;
     public String itemName;
-    public Double itemValue;
+    public String itemValue;
 
     //create table view to serve as the personal inventory
     @FXML
@@ -39,7 +39,7 @@ public class MainWindowController implements Initializable {
     private TableColumn<Item, String> itemNameColumn;
 
     @FXML
-    private TableColumn<Item, Double> itemValueColumn;
+    private TableColumn<Item, String> itemValueColumn;
 
     //Text fields used to take in user input
     @FXML
@@ -95,10 +95,10 @@ public class MainWindowController implements Initializable {
 
         //create a new item
         Item newItem = new Item(itemSerialNumberTextField.getText(), itemNameTextField.getText(),
-                Double.parseDouble(itemValueTextField.getText()));
+                itemValueTextField.getText());
 
         //call validators
-        if(serialNumberValidator() && !duplicateSerialNumberChecker() && itemNameValidator()){
+        if(serialNumberValidator() && !duplicateSerialNumberChecker() && itemNameValidator()/* && itemNameValidator()*/){
             //get all list items
             //add new item to list
             itemsTableView.getItems().add(newItem);
@@ -201,6 +201,7 @@ public class MainWindowController implements Initializable {
 
             //resize font
             itemNameLabel.setFont(Font.font("System", 10));
+
             //return false to indicate an error
             return false;
         }
@@ -208,6 +209,27 @@ public class MainWindowController implements Initializable {
 
         //else display nothing
         itemNameLabel.setText("");
+
+        //return true to indicate no error
+        return true;
+    }
+
+    //function to detect errors with item value input
+    public boolean itemValueValidator(){
+        //take in the current input
+        itemValue = itemValueTextField.getText();
+
+        //compare input with allowed values
+        if(!Character.isDigit(Integer.parseInt(itemValue))){
+            //display error message
+            itemValueLabel.setText("Value must be an number");
+
+            //resize font
+            itemValueLabel.setFont(Font.font("System", 10));
+
+            //return false to indicate an error
+            return false;
+        }
 
         //return true to indicate no error
         return true;
@@ -409,6 +431,8 @@ public class MainWindowController implements Initializable {
         //  File file = fileChooser.showOpenDialog(primaryStage);
     }
 
+    //TODO update uml
+
     //initialize controller class
     @Override
     public void initialize (URL url, ResourceBundle resources) {
@@ -429,7 +453,7 @@ public class MainWindowController implements Initializable {
         itemsTableView.setEditable(true);
         itemSerialNumberColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         itemNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-     //   itemValueColumn.setCellFactory(TextFieldTableCell.forTableColumn());//TODO
+        itemValueColumn.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
     //set up list

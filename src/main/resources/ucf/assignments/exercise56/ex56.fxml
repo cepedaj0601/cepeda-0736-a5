@@ -54,7 +54,7 @@
                      <children>
                         <TextField fx:id="itemSerialNumberTextField" prefWidth="145.0" promptText="Serial Number" />
                         <TextField fx:id="itemNameTextField" prefWidth="145.0" promptText="Item Name" />
-                        <TextField fx:id="itemValueTextField" prefWidth="145.0" promptText="Item Price" />
+                        <TextField fx:id="itemValueTextField" prefWidth="145.0" promptText="Item Value" />
                         <Button mnemonicParsing="false" onAction="#addNewItemButtonClicked" prefHeight="30.0" prefWidth="130.0" text="Add New Item" textAlignment="CENTER" />
                      </children>
                      <padding>
