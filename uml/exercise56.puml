@@ -6,7 +6,6 @@ class InventoryTracker {
 }
 
 class MainWindowController {
-
     + MainWindowController()
 
     addNewItemButtonClicked(EventHandler)
